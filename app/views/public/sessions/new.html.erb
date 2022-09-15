@@ -1,0 +1,35 @@
+<h2 style="background-color:#EEEEEE">ログイン</h2>
+
+<h4 style="background-color:#EEEEEE">会員の方はこちらからログイン</h4>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<table class="table table-borderless">
+  <div class="field">
+    </tr>
+    <th><%= f.label :"メールアドレス" %></th>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+    </tr>
+  </div>
+
+  <div class="field">
+    <tr>
+    <th><%= f.label :"パスワード" %></th>
+    <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+    </tr>
+  </div>
+  </table>
+
+  <div class="actions">
+    <td></td>
+    <td></td>
+    <td><%= f.submit "ログイン" %></td>
+  </div>
+<% end %>
+
+<div>
+    <tr>
+      <h4 style="background-color:#EEEEEE">会員登録がお済みでない方</h4>
+   <tr>
+</div>
+
+<p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
