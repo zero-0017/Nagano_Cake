@@ -17,5 +17,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items, only: [:show, :index, :new, :edit, :create, :update]
   end
 
+  scope module: :public do
+    resources :items, only: [:index, :show]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

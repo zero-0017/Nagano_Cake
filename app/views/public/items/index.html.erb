@@ -1,0 +1,10 @@
+<h3>商品一覧</h3>
+<div>
+  <% @item.each do |item| %>
+    <%= link_to item_path(item.id) do %>
+      <%= image_tag item.image.variant( resize: "200×150") %><br>
+      <%= item.name %><br>
+      ￥<%= item.price.to_s(:delimited) %>
+    <% end %>
+  <% end %>
+</div>
