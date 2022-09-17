@@ -1,9 +1,5 @@
 class Admin::ItemsController < ApplicationController
 
-  def index
-    @items = Item.all
-  end
-
   def new
     @item = Item.new
     @genres = Genre.all
@@ -11,12 +7,19 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @items = Item.all
     if @item.save
+      flash[:notice] = "商品を登録しました"
       redirect_to admin_item_path(@item)
     else
-      render :index
+      flash[:notice] = "商品の登録に失敗しました"
+      @genres = Genre.all
+      @item = Item.new
+      render :new
     end
+  end
+
+  def index
+    @items = Item.all
   end
 
   def show
@@ -25,13 +28,18 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
+      flash[:notice] = "商品登録情報を変更しました"
       redirect_to admin_item_path(@item)
     else
+      flash[:notice] = "商品登録情報の変更に失敗しました"
+      @genres = Genre.all
+      @item = Item.new
       render :edit
     end
   end
