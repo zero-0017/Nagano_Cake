@@ -1,0 +1,22 @@
+<% provide(:title, "マイページ") %>
+<div class="row">
+  <h2>マイページ</h2>
+  <p><strong class="information-link">登録情報</strong>
+    <%= link_to "編集",customer_infomation_edit_path %>
+  </p>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>氏名</td>
+        <td><%= full_name(@customer) %></td>
+      </tr>
+
+
+    </tbody>
+  </table>
+
+
+
+</div>
+
