@@ -13,7 +13,7 @@
   <body>
    <header>
 	   <nav class="nav navbar-nav navbar-left title">
-      <!--%= link_to "LOGO", root_path %>-->
+      <%= link_to "LOGO", root_path %>
     </nav>
 
     <ul class="nav navbar-nav navbar-right">
@@ -22,13 +22,13 @@
 	         <%= link_to "商品一覧", admin_items_path %>
           </li>
 	        <li class="nav-item">
-	         <%= link_to "会員一覧", admin_customers_path %>
+	         <!--%= link_to "会員一覧", admin_customers_path %>-->
 	        </li>
 	        <li class="nav-item">
-     	     <%= link_to "注文履歴一覧",  admin_orders_path %>
+     	     <!--%= link_to "注文履歴一覧",  admin_order_path %>-->
 	        </li>
 	        <li class="nav-item">
-	         <%= link_to "ジャンル一覧", admin_genres_path %>
+	         <!--%= link_to "ジャンル一覧", admin_genres_path %>-->
         	</li>
 	        <li class="nav-item">
            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
@@ -50,7 +50,7 @@
 
          <% else %>
           <li class="nav-item">
-           <!--%= link_to "About", about_path %>-->
+           <%= link_to "About", about_path %>
 	        </li>
 	        <li class="nav-item">
 	         <%= link_to "商品一覧", items_path %>

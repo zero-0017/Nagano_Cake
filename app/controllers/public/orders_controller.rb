@@ -44,7 +44,7 @@ class Public::OrdersController < ApplicationController
     @ordered_item.save
   end
    redirect_to thanks_orders_path
-   current_customer.cart_items.destroy_all
+   current_customer.cart_items.all_destroy
   end
 
   def thanks
