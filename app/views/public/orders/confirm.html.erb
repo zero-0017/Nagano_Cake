@@ -49,7 +49,7 @@
 
       <tr>
         <th>請求額</th>
-        <td><%= (@order.postage + @total).to_i %></td>
+        <td><%= (@total_price = @order.postage + @total).to_i %></td>
       </tr>
     </tbody>
   </table>
@@ -69,7 +69,7 @@
     <%= f.hidden_field :customer_id %>
     <%= f.hidden_field :postage %>
     <%= f.hidden_field :payment_method %>
-    <%= f.hidden_field :total_price %>
+    <%= f.hidden_field :total_price, :value => @total_price %>
     <%= f.hidden_field :status %>
     <%= f.submit '注文を確定する',class: "btn btn-success" %>
   <% end %>
