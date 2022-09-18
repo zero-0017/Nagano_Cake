@@ -8,11 +8,15 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
+    @cart_items = current_customer.cart_items
+    @order.postage = 800
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
 
   if params[:order][:address_option] == "0"
     @order.shipping_post_code = current_customer.post_code
     @order.shipping_address = current_customer.address
-    @order.shipping_name = current_customer.last_name + current_customer.first_name
+    @order.shipping_name = current_customer.family_name + current_customer.first_name
+    @order.payment_method = params[:order][:payment_method]
 
   elsif params[:order][:address_option] == "1"
     ship = Address.find(params[:order][:customer_id])
@@ -24,27 +28,30 @@ class Public::OrdersController < ApplicationController
     @order.shipping_post_code = params[:order][:shipping_post_code]
     @order.shipping_address = params[:order][:shipping_address]
     @order.shipping_name = params[:order][:shipping_name]
+    @order.payment_method = params[:order][:payment_method]
   else
       render 'new'
   end
     @cart_items = current_customer.cart_items.all
-    @order.member_id = current_member.id
   end
 
   def create
     @order = Order.new(order_params)
-    @order.member_id = current_member.id
+    @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items.all
     @order.save
-    current_member.cart_items.each do |cart_item|
-    @ordered_item = OrderedItem.new
+
+    @cart_items  = current_customer.cart_items
+    @cart_items.each do |cart_item|
+    @ordered_item = OrderItem.new
     @ordered_item.item_id = cart_item.item_id
     @ordered_item.quantity = cart_item.quantity
-    @ordered_item.total_price = (cart_item.item.price*1.10).floor
+    @ordered_item.purchase_price = cart_item.item.add_tax_price
     @ordered_item.order_id =  @order.id
     @ordered_item.save
   end
    redirect_to thanks_orders_path
-   current_customer.cart_items.all_destroy
+   current_customer.cart_items.destroy_all
   end
 
   def thanks
