@@ -41,6 +41,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/my_page' => 'customers#show'
     get 'customers/infomation/edit' => 'customers#edit'
     patch 'customers/infomation' => 'customers#update'
+
     resources :customers,only:[:show] do
       collection do
         get 'unsubscribe'

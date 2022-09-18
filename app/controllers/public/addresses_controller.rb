@@ -6,9 +6,6 @@ before_action :authenticate_customer!
     @address = Address.new
   end
 
-  def edit
-    @address = Address.find(params[:id])
-  end
 
   def create
     @address = Address.new(address_params)
@@ -21,6 +18,10 @@ before_action :authenticate_customer!
        @addresses = Address.all
        render 'index'
     end
+  end
+
+  def edit
+    @address = Address.find(params[:id])
   end
 
   def update
@@ -44,7 +45,7 @@ before_action :authenticate_customer!
   private
 
   def address_params
-    params.require(:addresses).permit(:post_code, :address, :name)
+    params.require(:address).permit(:post_code, :address, :name)
   end
 
 end
