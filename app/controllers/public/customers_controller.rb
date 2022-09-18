@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-
+  before_action :authenticate_customer!
 
   def show
     @customer = current_customer
@@ -12,7 +12,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
   　reset_session
-  　flash[:notice] = "ありがとうございました。またのご利用をお待ちしております。"
+  　flash[:notice] = "ありがとうございました。またのご利用をお待ちしております"
     redirect_to root_path
   end
 
@@ -23,7 +23,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-       flash[:success] = "登録情報を変更しました。"
+       flash[:success] = "登録情報を変更しました"
        redirect_to customers_path
     else
        render :edit and return

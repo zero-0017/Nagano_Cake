@@ -22,7 +22,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   scope module: :public do
     root to: 'homes#top'
-    get '/about' => 'homes#top'
+    get '/about' => 'homes#about'
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
       post '/confirm' => 'orders#confirm'
