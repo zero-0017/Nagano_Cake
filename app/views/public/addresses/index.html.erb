@@ -31,21 +31,21 @@
 
       <tbody>
         <% @addresses.each do |address| %>
-          <tr class="tr" id="destroy-<%= @address.id %>">
+          <tr class="tr" id="destroy-<%= address.id %>">
             <td>
-              <%= @address.post_code %>
+              <%= address.post_code %>
             </td>
             <td>
-              <%= @address.address %>
+              <%= address.address %>
             </td>
             <td>
-              <%= @address.name %>
+              <%= address.name %>
             </td>
             <td>
-              <%= link_to "編集する", edit_address_path(@address), class: "btn" %>
+              <%= link_to "編集する", edit_address_path(address), class: "btn" %>
             </td>
             <td>
-              <%= link_to "削除する", address(@address),method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn" %>
+              <%= link_to "削除する", address_path(address),method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn" %>
             </td>
           </tr>
         <% end %>
