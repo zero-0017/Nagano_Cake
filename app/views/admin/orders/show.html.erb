@@ -5,7 +5,7 @@
 　　      <div class="field">
 			        購入者
 			      <div>
-		          <%= @order.name %>
+		          <%= @order.customer.full_name %>
 		         </div>
 		        </div>
 　　      </div>
@@ -15,7 +15,8 @@
 	            配送先
 	          </div>
 	          <div>
-	            <%= full_address(@order) %>
+	            〒<%= @order.shipping_post_code %>
+         			 <%= @order.shipping_address %>
 	          </div>
 	        </div>
 
@@ -28,7 +29,7 @@
 	          </div>
 	        </div>
 
-	        <%= form_for model: @order, method: :patch do |f| %>
+	        <%= form_with model: @order, method: :patch do |f| %>
  	        <div>注文ステータス</div>
       	  <div>
             <%= f.select :status, Order.statuses.keys %>
@@ -65,17 +66,17 @@
 			        <%= order_item.item.name %>
 			      </td>
 			      <td class="text">
-			         ¥<%= tax_price.to_s(:delimited) %>
+			         ¥<%= order_item.purchase_price.to_s(:delimited) %>
 			      </td>
 			      <td class="text">
 			         <%= order_item.quantity %>
 			      </td>
 			      <td class="text">
-			         ¥<%= purchase_price(order_item).to_s(:delimited) %>
+			         ¥<%= order_item.subtotal.to_s(:delimited) %>
 			      </td>
-			         <%= form_with model: order_item, method: :patch do |f| %>
+			         <%= form_with model: @order_item, method: :patch do |f| %>
 			      <td>
-			         <%= f.select :produciton_status, OrderItem.produciton_statuses.keys, class: "status" %>
+			         <%= f.select :produciton_status, OrderItem.production_statuses.keys, class: "status" %>
 			         <%= f.submit '更新', class: "btn" %>
 			      </td>
 			         <% end %>
@@ -90,15 +91,15 @@
 			<table>
 				<tr>
           <th class="info">商品合計</th>
-					  <td>¥<%= total_price(@order_items).to_s(:delimited) %></td>
+					  <td>¥<%= @order.total_price - 800 %></td>
 				</tr>
 				<tr>
 					<th class="info">送料</th>
-					  <td>¥<%= @order.postage.to_s(:delimited) %></td>
+					  <td>¥<%= @order.postage %></td>
 				</tr>
 				<tr>
 					<th class="info">請求金額合計</th>
-					  <td>¥<%= @order.total_price.to_s(:delimited) %></td>
+					  <td>¥<%= @order.total_price %></td>
 				</tr>
 		  </table>
 	  </div>
