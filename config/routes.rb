@@ -35,15 +35,16 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     end
 
     resources :items, only: [:index, :show]
-    get 'customers/my_page' => 'customers#show'
-    get 'customers/infomation/edit' => 'customers#edit'
-    patch 'customers/infomation' => 'customers#update'
-    resources :customers,only:[:show] do
+
+    resources :customers,only:[:show, :edit, :update] do
       collection do
         get 'unsubscribe'
         patch 'withdrawal'
       end
     end
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/infomation/edit' => 'customers#edit'
+    patch 'customers/infomation' => 'customers#update'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
