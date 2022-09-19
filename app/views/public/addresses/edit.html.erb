@@ -1,23 +1,26 @@
-
-<div class="row">
-  <h2>配送先編集</h2>
-    <%= form_with model: @address, method: :patch do |f| %>
-      <div class="address">
-        <div class="form-group">
-          <%= f.label :"郵便番号（ハイフンなし）" %>
-          <%= f.text_field :post_code %>
-        </div>
-        <div class="form-group">
-          <%= f.label :"住所" %>
-          <%= f.text_field :address %>
-        </div>
-        <div class="form-group">
-          <%= f.label :"宛名" %>
-          <%= f.text_field :name %>
-        </div>
-        <div class="form-group">
-          <%= f.submit '変更内容を保存', class: "btn" %>
-        </div>
+<div class="col-8 mx-auto">
+  <h3 class="mt-5">配送先編集</h3>
+  <%= form_with model: @address, method: :patch do |f| %>
+  <table>
+    <tr>
+      <div calss="form-group">
+        <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+        <th><%= f.text_field :post_code, placeholder:"0000000" %></th>
       </div>
-    <% end %>
+    </tr>
+    <tr>
+      <div calss="form-group">
+        <th><%= f.label :"住所" %></th>
+        <th><%= f.text_field :address, placeholder:"住所を入力してください", :size => "50" %></th>
+      </div>
+    </tr>
+    <tr>
+      <div calss="form-group">
+        <th><%= f.label :"宛名" %></th>
+        <th><%= f.text_field :name, placeholder:"名前を入力してください", :size => "30"%></th>
+      　<th class="ml-5"><%= f.submit "変更内容を保存", class:"btn btn-success" %></th>
+      </div>
+    </tr>
+  </table>
+<% end %>
 </div>
