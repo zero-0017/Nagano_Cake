@@ -14,7 +14,7 @@
     <% if current_customer.cart_items.present? %>
      <div class="row justify-content-center shadow-lg">
       <table class="table">
-         <thead class="">
+         <thead class="table-secondary">
            <tr>
              <th>商品名</th>
              <th>単価(税込)</th>
@@ -67,7 +67,7 @@
      <% else %>
       <div class="row justify-content-center flex-direction-column">
         <div class="col-5">
-        <p>現在カートに商品は入っていません。</p>
+        <h5>現在カートに商品は入っていません。</h5>
         <%= link_to "商品一覧へ", items_path, class: 'btn btn-outline-info mt-5' %>
         </div>
       </div>
