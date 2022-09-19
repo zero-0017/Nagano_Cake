@@ -1,15 +1,11 @@
 class Public::ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page])
-    @search = Item.ransack(params[:q])
-    @items = @search.result
   end
 
   def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
-    @search = Item.ransack(params[:q])
-    @items = @search.result
   end
 
   private

@@ -28,16 +28,11 @@
 	            <%= @order.payment_method %>
 	          </div>
 	        </div>
-
-	        <%= form_with model: @order, method: :patch do |f| %>
- 	        <div>注文ステータス</div>
-      	  <div>
-            <%= f.select :status, Order.statuses.keys %>
-          </div>
-
+          <div>注文ステータス</div>
           <div>
-            <div><%= f.submit '更新' ,class: "btn" %>
-            </div>
+	          <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+            <%= f.select :status, Order.statuses.keys %>
+            <%= f.submit '更新' ,class: "btn" %>
             <% end %>
           </div>
 
@@ -74,9 +69,9 @@
 			      <td class="text">
 			         ¥<%= order_item.subtotal.to_s(:delimited) %>
 			      </td>
-			         <%= form_with model: @order_item, method: :patch do |f| %>
 			      <td>
-			         <%= f.select :produciton_status, OrderItem.production_statuses.keys, class: "status" %>
+			         <%= form_with model: order_item, url: admin_order_order_item_path(order_item),　method: :patch do |f| %>
+			         <%= f.select :produciton_status, OrderItem.production_statuses.keys %>
 			         <%= f.submit '更新', class: "btn" %>
 			      </td>
 			         <% end %>

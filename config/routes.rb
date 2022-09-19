@@ -50,6 +50,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch 'customers/infomation' => 'customers#update'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :genres, only: [:show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
