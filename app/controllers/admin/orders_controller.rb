@@ -8,11 +8,14 @@ before_action :authenticate_admin!
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params)
-      flash[:success]="注文ステータスを変更しました"
-      redirect_to admin_order_path(@order)
+    @order_items = @order.order_items
+    @order.update(order_params)
+    if @order.status == "入金確認"
+      @order_items.update_all(production_status: 1)
+      redirect_to  request.referer
+    else
+      redirect_to request.referer
     end
-      render"show"
   end
 
   private
