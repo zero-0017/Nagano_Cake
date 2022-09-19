@@ -17,7 +17,7 @@
 
       <tr>
         <th>支払方法</th>
-        <td><%= @order.payment_method %></td>
+        <td><%= @order.payment_method_i18n %></td>
       </tr>
 
       <tr>
@@ -41,9 +41,9 @@
     <% @order.order_items.each do |order_item| %>
       <tr>
         <td><%= order_item.item.name %></td>
-        <td><%= (cart_item.item.price*1.10).to_i %>円</td>
+        <td>¥<%= order_item.purchase_price.to_s(:delimited) %></td>
         <td><%= order_item.quantity%></td>
-        <td><% total += (cart_item.item.price*cart_item.quantity)*1.10 %>円</td>
+        <td>¥<%= order_item.subtotal.to_s(:delimited) %></td>
       </tr>
     <% end %>
    </tbody>
@@ -53,7 +53,7 @@
     <h4>請求情報</h4>
       <tr>
         <th>商品合計</th>
-        <td><%= @total.to_i %>円</td>
+        <td><%= @order.total_price - 800 %>円</td>
       </tr>
 
       <tr>
