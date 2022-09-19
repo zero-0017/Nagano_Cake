@@ -4,6 +4,8 @@ before_action :authenticate_admin!
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def update

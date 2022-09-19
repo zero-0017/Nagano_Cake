@@ -1,14 +1,20 @@
 class Admin::CustomersController < ApplicationController
   def index
     @customers = Customer.all
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def show
     @customer = Customer.find(params[:id])
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def edit
     @customer = Customer.find(params[:id])
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def update
