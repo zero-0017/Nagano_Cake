@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 mb-5 mt-5">
-      <h3><%= "#{@customer.family_name}#{@customer.first_name}" %>さんの会員詳細</h3>
+    <div class="col3-md offset-1 mt-5 mb-5">
+      <h3 style="background-color:#EEEEEE"><%= "#{@customer.family_name}#{@customer.first_name}" %>さんの会員詳細</h3>
     </div>
   </div>
 
-   <div class="row justify-content-left">
+   <div class="row justify-content-center">
     <div class="col-md-8">
-      <table class="table">
+      <table class="table shadow-lg">
         <tr>
-          <th>会員ID</th>
-          <td><%= @customer.id %></td>
+          <th class="table-dark">会員ID</th>
+          <td class="table-dark"><%= @customer.id %></td>
         </tr>
 
         <tr>
@@ -57,8 +57,8 @@
 
   <div class="row justify-content-center">
     <p class="text-center">
-      <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: 'btn btn-success btn-sm m-3' %>
-      <%= link_to "注文履歴一覧を見る", admin_order_path(@customer.id), class: 'btn btn-primary btn-sm m-3' %>
+      <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: 'btn btn-success m-3' %>
+      <%= link_to "注文履歴一覧を見る", admin_order_path(@customer.id), class: 'btn btn-primary m-3' %>
     </p>
   </div>
 </div>
