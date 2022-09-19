@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col3-md offset-1 mt-5">
-<h3 style="background-color:#EEEEEE"><strong>新規会員登録</strong></h3>
+      <h3 style="background-color:#EEEEEE"><strong>新規会員登録</strong></h3>
     </div>
   </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
- <table class="table　table-borderless table-sm mt-4 mb-4">
+<div class="row justify-content-center">
+    <div class="col-md-8">
+ <table class="table　table-borderless table-sm">
   <div class="field">
     <tr>
       <th><%= f.label :"名前" %></th>
@@ -94,4 +96,6 @@
   <div class="row mb-5">
     <h6 class="ml-3"><%= link_to "こちら", customer_session_path %>からログインしてください。</h6>
   </div>
+</div>
+</div>
 </div>
