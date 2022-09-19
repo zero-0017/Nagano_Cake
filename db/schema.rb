@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 2022_09_15_060823) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "post_code"
-    t.text "address"
-    t.string "name"
+    t.integer "customer_id", null: false
+    t.string "post_code", null: false
+    t.text "address", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2022_09_15_060823) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "customer_id"
-    t.integer "quantity"
+    t.integer "item_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -75,14 +75,14 @@ ActiveRecord::Schema.define(version: 2022_09_15_060823) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "family_name"
-    t.string "first_name"
-    t.string "family_name_kana"
-    t.string "first_name_kana"
-    t.string "post_code"
-    t.text "address"
-    t.integer "phone"
-    t.boolean "is_deleted", default: false
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "post_code", null: false
+    t.text "address", null: false
+    t.integer "phone", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -90,40 +90,40 @@ ActiveRecord::Schema.define(version: 2022_09_15_060823) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.text "introduction"
-    t.integer "price"
-    t.boolean "is_active", default: true
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "item_id"
-    t.integer "order_id"
-    t.integer "quantity"
-    t.integer "purchase_price"
-    t.integer "production_status", default: 0
+    t.integer "item_id", null: false
+    t.integer "order_id", null: false
+    t.integer "quantity", null: false
+    t.integer "purchase_price", null: false
+    t.integer "production_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "total_price"
-    t.integer "payment_method", default: 0
-    t.integer "postage"
-    t.string "shipping_post_code"
-    t.string "shipping_address"
-    t.string "shipping_name"
-    t.integer "status", default: 0
+    t.integer "customer_id", null: false
+    t.integer "total_price", null: false
+    t.integer "payment_method", default: 0, null: false
+    t.integer "postage", null: false
+    t.string "shipping_post_code", null: false
+    t.string "shipping_address", null: false
+    t.string "shipping_name", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
