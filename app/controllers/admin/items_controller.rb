@@ -3,6 +3,8 @@ class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
     @genres = Genre.all
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def create
@@ -20,15 +22,21 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def show
     @item = Item.find(params[:id])
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def edit
     @item = Item.find(params[:id])
     @genres = Genre.all
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def update

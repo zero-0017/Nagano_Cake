@@ -3,6 +3,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def unsubscribe
@@ -18,6 +20,8 @@ class Public::CustomersController < ApplicationController
 
   def edit
     @customer = current_customer
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def update

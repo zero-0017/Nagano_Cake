@@ -4,6 +4,8 @@ before_action :authenticate_customer!
   def index
     @addresses = Address.all
     @address = Address.new
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
 
@@ -22,6 +24,8 @@ before_action :authenticate_customer!
 
   def edit
     @address = Address.find(params[:id])
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def update

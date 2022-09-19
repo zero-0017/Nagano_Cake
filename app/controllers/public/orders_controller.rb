@@ -4,6 +4,8 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @addresses = current_customer.addresses.all
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def confirm
@@ -55,14 +57,20 @@ class Public::OrdersController < ApplicationController
   end
 
   def thanks
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def index
     @orders = current_customer.orders
+　　@search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def show
     @order = Order.find(params[:id])
+　　@search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   private
