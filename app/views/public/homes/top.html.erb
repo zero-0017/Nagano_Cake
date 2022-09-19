@@ -23,14 +23,11 @@
   <h2>新着商品</h2>
     <table>
       <tbody>
-       <% @items.each do |item|%>
+       <% @items.first(4).each do |item|%>
         <td>
             <%= link_to item_path(item) do %>
-            <!--%= image_tag item.item_image, :size => '200x150' %>-->
-            <% end %>
-
-            <%= link_to item_path(item) do %>
-            <%= item.name %>
+            <%= image_tag item.image, :size => '200x150' %><br>
+            <%= item.name %><br>
             ¥ <%= item.price %>
             <% end %>
         </td>
