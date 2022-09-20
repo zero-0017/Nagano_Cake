@@ -5,7 +5,7 @@
       <%= render "sidebar", genres: @genres %>
     </div>
     <div class="col-md-10">
-      <h4 class="mt-5"><strong>商品一覧</strong><span class="font">(全<%= @items.count %>件)</span></h4>
+      <h4 class="mt-5"><strong style="background-color:#EEEEEE">商品一覧<span class="font">(全<%= @items.count %>件)</span></strong></h4>
       <div class="row mx-auto">
         <% @items.each do |item| %>
           <%= link_to item_path(item.id), class: "col-3 text-center text-dark text-nowrap mt-5" do %>

@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
+    <div class="col-5 text-center">
+      <h3><strong style="background-color:#EEEEEE">会員情報編集</strong></h3>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-9 px-0 mt-3">
-      <h4 class="m-3">会員情報編集</h4>
       <%= form_with model: @customer, method: :patch, local:true do |f| %>
       <table class="table table-borderless ml-5">
         <tr>
