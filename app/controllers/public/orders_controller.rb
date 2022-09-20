@@ -13,28 +13,29 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @order.postage = 800
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    if  params[:order][:address_option] == "0"
+        @order.shipping_post_code = current_customer.post_code
+        @order.shipping_address = current_customer.address
+        @order.shipping_name = current_customer.family_name + current_customer.first_name
+        @order.payment_method = params[:order][:payment_method]
 
-  if params[:order][:address_option] == "0"
-    @order.shipping_post_code = current_customer.post_code
-    @order.shipping_address = current_customer.address
-    @order.shipping_name = current_customer.family_name + current_customer.first_name
-    @order.payment_method = params[:order][:payment_method]
+    elsif  params[:order][:address_option] == "1"
+        ship = Address.find(params[:order][:customer_id])
+        @order.shipping_post_code = ship.post_code
+        @order.shipping_address = ship.address
+        @order.shipping_name = ship.name
 
-  elsif params[:order][:address_option] == "1"
-    ship = Address.find(params[:order][:customer_id])
-    @order.shipping_post_code = ship.post_code
-    @order.shipping_address = ship.address
-    @order.shipping_name = ship.name
-
-  elsif params[:order][:address_option] = "2"
-    @order.shipping_post_code = params[:order][:shipping_post_code]
-    @order.shipping_address = params[:order][:shipping_address]
-    @order.shipping_name = params[:order][:shipping_name]
-    @order.payment_method = params[:order][:payment_method]
-  else
-      render 'new'
-  end
+    elsif params[:order][:address_option] = "2"
+        @order.shipping_post_code = params[:order][:shipping_post_code]
+        @order.shipping_address = params[:order][:shipping_address]
+        @order.shipping_name = params[:order][:shipping_name]
+        @order.payment_method = params[:order][:payment_method]
+    else
+        render 'new'
+    end
     @cart_items = current_customer.cart_items.all
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def create
@@ -63,13 +64,13 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
-　　@search = Item.ransack(params[:q])
+    @search = Item.ransack(params[:q])
     @items = @search.result
   end
 
   def show
     @order = Order.find(params[:id])
-　　@search = Item.ransack(params[:q])
+    @search = Item.ransack(params[:q])
     @items = @search.result
   end
 
