@@ -4,15 +4,14 @@ before_action :authenticate_admin!
   def update
     @order_item = OrderItem.find(params[:order_id])
     @order = @order_item.order
-    @order_item.update(order_item_params)
-    if @order_item.production_status == "製作中"
-      @order.update(status:2)
-      redirect_to  request.referer
-    elsif @order.order_items.count ==  @order.order_items.where(production_status: "製作完了").count
-      @order.update(status:3)
+    if @order_item.update(order_item_params)
+      if @order_item.production_status == "制作中"
+        @order.update(status:2)
+      elsif @order.order_items.count ==  @order.order_items.where(production_status: "制作完了").count
+        @order.update(status:3)
+      end
       redirect_to request.referer
     else
-      redirect_to request.referer
     end
   end
 
