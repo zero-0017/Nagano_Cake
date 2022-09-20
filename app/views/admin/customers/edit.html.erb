@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col3-md offset-1 mt-5">
-      <h3 style="background-color:#EEEEEE"><%= "#{@customer.family_name}#{@customer.first_name}" %>さんの会員情報編集</h3>
+      <h3><%= "#{@customer.family_name}#{@customer.first_name}" %>さんの会員情報編集</h3>
     </div>
   </div>
 
@@ -12,7 +12,7 @@
   <div class="field">
     <tr>
     <div class="field">
-      <th class="table-dark"><p>会員ID　<%= @customer.id %></p>
+      <th>会員ID</th><td><%= @customer.id %></td>
     </div>
     </tr>
   </div>
