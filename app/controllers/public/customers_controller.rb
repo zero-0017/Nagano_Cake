@@ -8,6 +8,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
+    @search = Item.ransack(params[:q])
+    @items = @search.result
   end
 
   def withdrawal
