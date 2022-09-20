@@ -16,6 +16,8 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "商品の登録に失敗しました"
       @genres = Genre.all
       @item = Item.new
+      @search = Item.ransack(params[:q])
+      @items = @search.result
       render :new
     end
   end
