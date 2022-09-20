@@ -60,6 +60,7 @@ class Public::OrdersController < ApplicationController
   def thanks
     @search = Item.ransack(params[:q])
     @items = @search.result
+    @item = Item.order("RANDOM()").limit(3)
   end
 
   def index
