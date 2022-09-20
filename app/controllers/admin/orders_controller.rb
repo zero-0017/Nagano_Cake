@@ -19,7 +19,6 @@ before_action :authenticate_admin!
       end
       redirect_to request.referer
     else
-      render admin_order_path(@order)
     end
   end
 
