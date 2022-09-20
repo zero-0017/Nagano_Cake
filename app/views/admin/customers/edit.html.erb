@@ -1,14 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col3-md offset-1 mt-5">
-      <h3><%= "#{@customer.family_name}#{@customer.first_name}" %>さんの会員情報編集</h3>
-    </div>
-  </div>
+    <div class="col-lg-8 mx-auto">
+      <h4><strong><%= "#{@customer.family_name}#{@customer.first_name}" %>さんの会員情報編集</strong></h4>
 
-   <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
-
-<div class="row justify-content-center">
-  <table class="table　table-borderless table-sm mt-4 mb-4">
+  　　 <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+<div class="mt-4 shadow-lg px-5 py-5 mt-4">
+  <table class="table　table-borderless table-sm ml-5">
   <div class="field">
     <tr>
     <div class="field">
@@ -72,13 +69,12 @@
       </label>
     </tr>
   </div>
-
-  <div class="actions">
-    <td></td>
-    <td></td>
-      <td><%= f.submit "変更を保存", class: "btn btn-success mt-2" %></td>
-  </div>
-</table>
-<% end %>
+  </table>
 </div>
+  <div class="actions mt-3 text-center">
+    <%= f.submit "変更を保存", class: "btn btn-success mt-2" %>
+  </div>
+<% end %>
+　　</div>
+　</div>
 </div>
