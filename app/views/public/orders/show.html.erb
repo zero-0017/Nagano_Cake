@@ -16,9 +16,9 @@
   <div class="col-2  mx-auto">
     <p><strong>請求情報</strong></p>
       <table class="table table-bordered shadow-lg">
-        <tr><th class="table-active">送料</th><td><%= @order.postage %></td></tr>
-        <tr><th class="table-active">商品合計</th><td><%= @order.total_price - 800 %></td></tr>
-        <tr><th class="table-active">請求合計</th><td><%= @order.total_price %></td></tr>
+        <tr><th class="table-active">送料</th><td>¥<%= @order.postage %></td></tr>
+        <tr><th class="table-active">商品合計</th><td>¥<%= (@order.total_price - 800).to_s(:delimited) %></td></tr>
+        <tr><th class="table-active">請求合計</th><td>¥<%= @order.total_price.to_s(:delimited) %></td></tr>
       </table>
   </div>
 </div>
@@ -37,9 +37,9 @@
     <% @order.order_items.each do |order_item| %>
       <tr>
         <td style="word-break:break-all"><%= order_item.item.name %></td>
-        <td><%= order_item.purchase_price.to_s(:delimited) %></td>
+        <td>¥<%= order_item.purchase_price.to_s(:delimited) %></td>
         <td><%= order_item.quantity %></td>
-        <td><%= order_item.subtotal.to_s(:delimited) %></td>
+        <td>¥<%= order_item.subtotal.to_s(:delimited) %></td>
       </tr>
     <% end %>
     </tbody>
