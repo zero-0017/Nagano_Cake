@@ -58,7 +58,7 @@
   <div class="row justify-content-center">
     <p class="text-center">
       <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: 'btn btn-success m-3' %>
-      <%= link_to "注文履歴一覧を見る", admin_order_path(@customer.id), class: 'btn btn-primary m-3' %>
+      <%= link_to "注文履歴一覧を見る", admin_customer_search_order_path(@customer.id), class: 'btn btn-primary m-3' %>
     </p>
   </div>
 </div>
