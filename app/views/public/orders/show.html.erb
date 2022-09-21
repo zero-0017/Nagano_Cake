@@ -6,7 +6,7 @@
 <div class="row mx-auto">
   <div class="col-8 mx-auto">
     <p><strong>注文情報</strong></p>
-    <table class="table table-bordered">
+    <table class="table table-bordered shadow-lg">
       <tr><th class="table-active">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
       <tr><th class="table-active">配送先</th><td><%= "〒#{@order.shipping_post_code}" %><br><%= @order.shipping_address %><br><%= @order.shipping_name %></td></tr>
       <tr><th class="table-active">支払い方法</th><td><%= @order.payment_method_i18n %></td></tr>
@@ -15,7 +15,7 @@
   </div>
   <div class="col-2  mx-auto">
     <p><strong>請求情報</strong></p>
-      <table class="table table-bordered">
+      <table class="table table-bordered shadow-lg">
         <tr><th class="table-active">送料</th><td><%= @order.postage %></td></tr>
         <tr><th class="table-active">商品合計</th><td><%= @order.total_price - 800 %></td></tr>
         <tr><th class="table-active">請求合計</th><td><%= @order.total_price %></td></tr>
@@ -24,7 +24,7 @@
 </div>
 <div class="col-11 mx-auto">
 <p><strong>注文内容</strong></p>
-  <table class="table table-bordered">
+  <table class="table table-bordered shadow-lg">
     <thead>
       <tr>
         <th class="table-active" style="width:60%">商品</th>
