@@ -1,5 +1,7 @@
-<div class="col-8 mx-auto">
-  <h3 class="mt-5">配送先編集</h3>
+<div class="container">
+ <div class="row">
+  <div class="col-9 mx-auto">
+  <h4><strong>配送先編集</strong></h4>
   <%= form_with model: @address, method: :patch do |f| %>
   <table>
     <tr>
@@ -17,10 +19,12 @@
     <tr>
       <div calss="form-group">
         <th><%= f.label :"宛名" %></th>
-        <th><%= f.text_field :name, placeholder:"名前を入力してください", :size => "30"%></th>
+        <th><%= f.text_field :name, placeholder:"名前を入力してください"%></th>
       　<th class="ml-5"><%= f.submit "変更内容を保存", class:"btn btn-success" %></th>
       </div>
     </tr>
   </table>
-<% end %>
+  <% end %>
+  </div>
+ </div>
 </div>
