@@ -21,17 +21,14 @@
                    <%= image_tag cart_item.item.image, :size => '50x50' %>
                    <%= cart_item.item.name %>
                   </td>
-
                   <td>
-                    <%= cart_item.item.add_tax_price.to_s(:delimited) %>
+                    ¥<%= cart_item.item.add_tax_price.to_s(:delimited) %>
                   </td>
-
                   <td>
                     <%= cart_item.quantity %>
                   </td>
-
                   <td>
-                    <%= (cart_item.item.add_tax_price*cart_item.quantity).to_s(:delimited) %>
+                    ¥<%= (cart_item.item.add_tax_price*cart_item.quantity).to_s(:delimited) %>
                   </td>
                 </tr>
            <% end %>
@@ -45,17 +42,17 @@
               <tbody>
                <tr>
                  <th class="table-secondary">送料</th>
-                 <td><%= @order.postage %></td>
+                 <td>¥<%= @order.postage %></td>
                </tr>
 
                <tr>
                  <th class="table-secondary">商品合計</th>
-                 <td><%= @total.to_s(:delimited) %></td>
+                 <td>¥<%= @total.to_s(:delimited) %></td>
                </tr>
 
                <tr>
                  <th class="table-secondary">請求額</th>
-                 <td><%= (@total_price = @order.postage + @total).to_s(:delimited) %></td>
+                 <td>¥<%= (@total_price = @order.postage + @total).to_s(:delimited) %></td>
                </tr>
               </tbody>
             </table>
