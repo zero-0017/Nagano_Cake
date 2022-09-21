@@ -22,6 +22,14 @@ class Admin::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to admin_customer_path(@customer.id)
   end
+  
+  def search_order
+    @genres = Genre.all
+    @customer = Customer.find(params[:id])
+    @customerorders = Order.where(customer_id: @customer.id)
+    @search = Item.ransack(params[:q])
+    @items = @search.result
+  end
 
   private
 
