@@ -31,7 +31,7 @@
             <%= link_to item_path(item), class: "col-3 text-center text-dark text-nowrap" do %>
             <%= image_tag item.image, :size => '200x150' %><br>
             <%= item.name %><br>
-            ¥ <%= item.price %>
+            ¥ <%= item.price.to_s(:delimited) %>
             <% end %>
        <% end %>
  <p class="ml-auto mt-3"><%= link_to "全ての商品を見る＞", items_path %></p>
