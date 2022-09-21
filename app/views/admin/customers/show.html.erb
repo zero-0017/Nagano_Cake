@@ -9,42 +9,42 @@
     <div class="col-md-8">
       <table class="table shadow-lg">
         <tr>
-          <th class="table-dark">会員ID</th>
-          <td class="table-dark"><%= @customer.id %></td>
+          <th class="table-active">会員ID</th>
+          <td><%= @customer.id %></td>
         </tr>
 
         <tr>
-          <th>氏名</th>
+          <th class="table-active">氏名</th>
           <td><%= "#{@customer.family_name}"" ""#{@customer.first_name}" %></td>
         </tr>
 
         <tr>
-          <th>フリガナ</th>
+          <th class="table-active">フリガナ</th>
           <td><%= "#{@customer.family_name_kana}"" ""#{@customer.first_name_kana}" %></td>
         </tr>
 
         <tr>
-          <th>郵便番号</th>
+          <th class="table-active">郵便番号</th>
           <td><%= @customer.post_code %></td>
         </tr>
 
         <tr>
-          <th>住所</th>
+          <th class="table-active">住所</th>
           <td><%= @customer.address %></td>
         </tr>
 
         <tr>
-          <th>電話番号</th>
+          <th class="table-active">電話番号</th>
           <td><%= @customer.phone %></td>
         </tr>
 
         <tr>
-          <th>メールアドレス</th>
+          <th class="table-active">メールアドレス</th>
           <td><%= @customer.email %></td>
         </tr>
 
         <tr>
-          <th>会員ステータス</th>
+          <th class="table-active">会員ステータス</th>
           <% if @customer.is_deleted == true %>
             <td class="text-secondary font-weight-bold">退会</td>
           <% else %>
