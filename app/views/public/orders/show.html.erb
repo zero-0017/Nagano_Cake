@@ -1,19 +1,20 @@
+<div class="container">
 <div class="row">
   <div class="col-5 text-center">
-    <h3><strong>注文履歴詳細</strong></h3>
+    <h4><strong>注文履歴詳細</strong></h4>
   </div>
 </div>
-<div class="row mx-auto">
-  <div class="col-8 mx-auto">
+<div class="row mx-auto mt-4">
+  <div class="col-8 ml-5">
     <p><strong>注文情報</strong></p>
     <table class="table table-bordered shadow-lg">
       <tr><th class="table-active">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
-      <tr><th class="table-active">配送先</th><td><%= "〒#{@order.shipping_post_code}" %><br><%= @order.shipping_address %><br><%= @order.shipping_name %></td></tr>
+      <tr><th class="table-active">配送先</th><td><%= "〒#{@order.shipping_post_code}" %><br><%= @order.shipping_address %><br><br><%= @order.shipping_name %></td></tr>
       <tr><th class="table-active">支払い方法</th><td><%= @order.payment_method_i18n %></td></tr>
       <tr><th class="table-active">ステータス</th><td><%= @order.status %></td></tr>
     </table>
   </div>
-  <div class="col-2  mx-auto">
+  <div class="col-3">
     <p><strong>請求情報</strong></p>
       <table class="table table-bordered shadow-lg">
         <tr><th class="table-active">送料</th><td>¥<%= @order.postage %></td></tr>
@@ -22,7 +23,7 @@
       </table>
   </div>
 </div>
-<div class="col-11 mx-auto">
+<div class="col-11 mx-auto mt-4">
 <p><strong>注文内容</strong></p>
   <table class="table table-bordered shadow-lg">
     <thead>
@@ -44,4 +45,5 @@
     <% end %>
     </tbody>
   </table>
+</div>
 </div>
