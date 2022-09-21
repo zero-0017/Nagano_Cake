@@ -8,10 +8,11 @@
       <div class="row align-items-center">
       <% @item.each do |item| %>
 
-        <div class="mx-auto px-1 col-2 shadow-lg ">
+        <div class="mx-auto px-1 col-2 shadow-lg">
         <%= link_to item_path(item), class: "text-center text-dark" do %>
-　　　　  <%= image_tag item.image, :size => '70x70',class:"card-img-top" %>
-　　　　<%= item.name %>
+　　　　  <%= image_tag item.image, :size => '200',class:"card-img-top" %>
+　  　　　<%= item.name %><br>
+　  　　　￥<%= item.price.to_s(:delimited) %>
 　　　　<% end %>
 　　　　</div>
       <% end %>
