@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCake</title>
+    <title>Nagano_Cake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,7 @@
   </head>
 
   <body>
-   <header class="border-bottom border-secondary border-3 mb-5">
+   <header class="border-bottom border-secondary border-3 mb-5 border border-warning">
    	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #f5c1ab;">
 	   	<div class="container">
       <a class="navbar-brand" href="/"><%= image_tag 'logo1.png', :size => '100x50' %></a>
@@ -40,13 +40,13 @@
            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
 	        </li>
 
-          <%= search_form_for @search, url: admin_items_path do |f| %>
-    　        <div class="input-group mt-5">
-              <%= f.text_field :name_cont, placeholder: "Search" %>
-                <div class="input-group-append"><button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
-    　　          </div>
-    　        </div>
-          <% end %>
+          <%= search_form_for @search, url: items_path do |f| %>
+    　       <div class="input-group ml-5">
+             <%= f.text_field :name_cont, placeholder: "Search", class: "border border-white" %>
+             <div class="input-group-append"><button class="btn bg-transparent" type="submit"><i class="fa fa-search" style="color: white;"></i></button>
+    　　       </div>
+    　       </div>
+           <% end %>
 
          <% elsif customer_signed_in? %>
            <li class="nav-item">
@@ -69,8 +69,8 @@
 
            <%= search_form_for @search, url: items_path do |f| %>
     　       <div class="input-group ml-5">
-             <%= f.text_field :name_cont, placeholder: "Search" %>
-             <div class="input-group-append"><button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i></button>
+             <%= f.text_field :name_cont, placeholder: "Search", class: "border border-white" %>
+             <div class="input-group-append"><button class="btn bg-transparent" type="submit"><i class="fa fa-search" style="color: white;"></i></button>
     　　       </div>
     　       </div>
            <% end %>
