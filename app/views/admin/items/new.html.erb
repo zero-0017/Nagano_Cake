@@ -2,6 +2,7 @@
   <div class="row ml-5">
     <div class="col-9 px-0 mt-3 ml-5">
       <h4 class="mb-4"><strong>商品新規登録</strong></h4>
+      <div class="shadow-lg px-5 py-5">
       <%= form_with model:@item, url: admin_items_path, local:true do |f| %>
       <table class="table table-borderless pl-5">
       <tr>
@@ -40,6 +41,7 @@
       <%= f.submit "新規登録", class: 'btn btn-success' %>
     </div>
     <% end %>
+    <
     </div>
   </div>
 </div>
