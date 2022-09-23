@@ -1,7 +1,7 @@
 class Admin::GenresController < ApplicationController
   def index
     @genre = Genre.new
-    @genres = Genre.all
+    @genres = Genre.page(params[:page])
     @search = Item.ransack(params[:q])
     @items = @search.result
   end
@@ -19,6 +19,12 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     @search = Item.ransack(params[:q])
     @items = @search.result
+  end
+
+  def destroy
+    @genre = Genre.find(params[:id])
+    @genre .destroy
+      redirect_to admin_genres_path
   end
 
   def update

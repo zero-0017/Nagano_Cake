@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page])
     @search = Item.ransack(params[:q])
     @items = @search.result
   end
@@ -22,11 +22,11 @@ class Admin::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to admin_customer_path(@customer.id)
   end
-  
+
   def search_order
     @genres = Genre.all
     @customer = Customer.find(params[:id])
-    @customerorders = Order.where(customer_id: @customer.id)
+    @customerorders = Order.where(customer_id: @customer.id).page(params[:page])
     @search = Item.ransack(params[:q])
     @items = @search.result
   end
