@@ -64,7 +64,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page])
     @search = Item.ransack(params[:q])
     @items = @search.result
   end

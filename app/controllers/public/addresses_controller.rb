@@ -2,7 +2,7 @@ class Public::AddressesController < ApplicationController
 before_action :authenticate_customer!
 
   def index
-    @addresses = Address.all
+    @addresses = Address.page(params[:page])
     @address = Address.new
     @search = Item.ransack(params[:q])
     @items = @search.result
